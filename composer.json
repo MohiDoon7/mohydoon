@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "7.2.0",
+        "php": "8.1",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^7.10",
         "laravel-lang/lang": "^12.17",
@@ -61,9 +61,7 @@
         ]
     },
     "config": {
-        "platform":{
-            "php":"7.2.0"
-        },
+       
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true,
