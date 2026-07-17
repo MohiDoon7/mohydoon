@@ -6,12 +6,12 @@ use App\Http\Controllers\Auth\Config;
 use DB;
 use Carbon\Carbon;
 use App\news;
+use App\users;
 use App\Mail\sendmail;
 use App\Mail\VeifyEmail;
 use App\Admin;
 use App\Mail\Dooney;
 use Lang;
-use App\users;
 use App\Jobs\sendmailiob;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Mail;
@@ -46,9 +46,16 @@ class adminauth extends Controller
         $user= Admin::create($validate);
 
         $user->sendverficationEmail();
+
        
-       
-       auth()->login($user);
+        //Mail::to($user->email)->send(new VeifyEmail($user));
+
+
+        //$emai_token=$user->generateEmailVerificationToken();
+       // return dd($emai_token);
+       // $url=URL::signedRoute('verify-email',['token'=> $emai_token]);
+       // Mail::to($use->email)->send(new sendmail($url));
+        auth()->login($user);      
        return redirect(aurl('account'));
 
     }
@@ -152,7 +159,7 @@ class adminauth extends Controller
 
                 DB::table('password_resets')->where('email',request('email'))->delete();
                 admin()->attempt(['email'=> $check_toke->email,'password'=>request('password')],true);
-                return redirect(aurl())->with('your password is has been updated');
+                return redirect(aurl());
     
             }else{
                 return redirect(aurl('forgot_password'));          
@@ -160,13 +167,10 @@ class adminauth extends Controller
         }
 
 
-
-
-
         public function all_news_post(Request $request){
 
             
-            news::create([
+            news::Create([
         'content'=>request('content')
      ]);
 
@@ -193,7 +197,7 @@ class adminauth extends Controller
     }
     public function all_news_send(Request $request){
         $post = news::all();
-        return view('admin.all_news', compact('post') );
+        return view('admin.all_news',['post'=>$post]);
     }
 
 
@@ -240,7 +244,7 @@ class adminauth extends Controller
    
     $verify=Admin::where('verifyToken',$token)->firstOrFail()->update(['verifyToken'=> null]);
 
-        return redirect(aurl('/'))->with('success','تم تفعيل حسابك');
+        return redirect(aurl('/'))->with('success','Êã ÊÝÚíá ÍÓÇÈß');
 
     
   }  

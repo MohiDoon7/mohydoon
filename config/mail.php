@@ -3,12 +3,12 @@ return [
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
 
-    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
+    'host' => env('MAIL_HOST', 'localhost'),
 
-    'port' => env('MAIL_PORT', 2525 ),
+    'port' => env('MAIL_PORT', 1025),
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'Karam@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'mohamedrabeh197@gmail.com.com'),
         'name' => env('MAIL_FROM_NAME', 'Karam'),
     ],
 

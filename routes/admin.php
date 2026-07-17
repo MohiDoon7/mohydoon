@@ -14,6 +14,8 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'admin'],function () {
         Route::get('register', 'adminauth@showRegister')->name('register');
 		Route::post('registeration','adminauth@adminregister')->name('register');
 		Route::get('verfiy/email/{token}','adminauth@verify')->name('verfiyemail');
+				Route::get('/account','adminauth@chickup')->name('account');
+
 
 
 
@@ -23,7 +25,6 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'admin'],function () {
 		Route::get('books','adminauth@books')->name('books');
     
         Route::get('sendemail','adminauth@sendemail');
-		Route::get('/account','adminauth@chickup')->name('account');
 
 
 
@@ -32,15 +33,9 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'admin'],function () {
       
 		Route::post('all_news','adminauth@all_news_post');
 		Route::get('all_news','adminauth@all_news_send');
-		//Route::get('/verfiyemail{token}','adminauth@verify');
+		
 
-
-	
-
-				
-					
-					
-
+		
 			    Route::any('logout','adminauth@logout');
 								
 				});	
